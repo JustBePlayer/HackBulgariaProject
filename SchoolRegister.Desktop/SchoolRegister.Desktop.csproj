@@ -53,12 +53,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ForgottenPasswordForm.xaml.cs">
+      <DependentUpon>ForgottenPasswordForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="StudentWindow.xaml.cs">
       <DependentUpon>StudentWindow.xaml</DependentUpon>
     </Compile>
-    <Page Include="DaskalaWindow.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="ForgottenPasswordForm.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -67,9 +70,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DaskalaWindow.xaml.cs">
-      <DependentUpon>DaskalaWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

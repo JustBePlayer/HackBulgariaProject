@@ -32,6 +32,10 @@ namespace SchoolRegister.Desktop
             Daskala dask = new Daskala();
             dask.Show();
             this.Close();
+        private void forgottenPasswordClick(object sender, MouseButtonEventArgs e)
+        {
+            var forgottenPass = new ForgottenPasswordForm();
+            forgottenPass.ShowDialog();
         }
     }
 }
