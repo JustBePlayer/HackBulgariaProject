@@ -166,12 +166,19 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ClassModel.cs" />
+    <Compile Include="Models\GradeModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\NotificationModel.cs" />
+    <Compile Include="Models\SchoolModel.cs" />
+    <Compile Include="Models\StudentModel.cs" />
+    <Compile Include="Models\SubjectModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -234,6 +241,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Student\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -243,6 +251,10 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SchoolEntities\SchoolEntities.csproj">
+      <Project>{84c8d8ac-40b6-4776-a2b7-9159c3d83079}</Project>
+      <Name>SchoolEntities</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SchoolRegister.Server\SchoolRegister.Server.csproj">
       <Project>{32024b5d-c453-4e54-a357-0d807ee0dc9a}</Project>
       <Name>SchoolRegister.Server</Name>
