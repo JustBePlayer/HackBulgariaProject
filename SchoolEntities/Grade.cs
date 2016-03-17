@@ -11,13 +11,16 @@ namespace SchoolEntities
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations.Schema;
     public partial class Grade
     {
         public int Id { get; set; }
         public string Mark { get; set; }
+        [ForeignKey("Teacher")]
         public int TeacherId { get; set; }
+        [ForeignKey("Student")]
         public int StudentId { get; set; }
+        [ForeignKey("Subject")]
         public int SubjectId { get; set; }
     
         public virtual Teacher Teacher { get; set; }

@@ -11,7 +11,7 @@ namespace SchoolEntities
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations.Schema;
     public partial class Subject
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,6 +23,7 @@ namespace SchoolEntities
     
         public int Id { get; set; }
         public string Description { get; set; }
+        [ForeignKey("Class")]
         public int ClassId { get; set; }
     
         public virtual Class Class { get; set; }

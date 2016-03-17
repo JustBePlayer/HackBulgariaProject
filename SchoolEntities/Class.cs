@@ -11,7 +11,7 @@ namespace SchoolEntities
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations.Schema;
     public partial class Class
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,11 +23,13 @@ namespace SchoolEntities
         public int Id { get; set; }
         public string Number { get; set; }
         public string Letter { get; set; }
+        [ForeignKey("School")]
         public int SchoolId { get; set; }
     
         public virtual School School { get; set; }
         public virtual Teacher Teacher { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Subject> Subjects { get; set; }
+        public virtual ICollection<Student> Students { get; set; }
     }
 }

@@ -31,5 +31,7 @@ namespace SchoolEntities
         public virtual DbSet<Subject> Subjects { get; set; }
         public virtual DbSet<Notification> Notifications { get; set; }
         public virtual DbSet<Grade> Grades { get; set; }
+        public virtual DbSet<Teacher> Teachers { get; set; }
+        public virtual DbSet<Student> Students { get; set; }
     }
 }

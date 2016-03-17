@@ -1,5 +1,6 @@
 ﻿using System.Web;
-using Mic
+using Microsoft;
+using System.Web.Optimization;
 
 namespace SchoolRegister.Web
 {
