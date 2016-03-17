@@ -4,16 +4,295 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Namespace="SchoolEntityContainer.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005">
-        <EntityContainer Name="SchoolEntityContainerTargetContainer" >
-        </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+    <Schema Namespace="SchoolEntityContainer.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="SchoolEntityContainerStoreContainer">
+    <EntitySet Name="Users" EntityType="SchoolEntityContainer.Store.Users" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Classes" EntityType="SchoolEntityContainer.Store.Classes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Schools" EntityType="SchoolEntityContainer.Store.Schools" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Subjects" EntityType="SchoolEntityContainer.Store.Subjects" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Notifications" EntityType="SchoolEntityContainer.Store.Notifications" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Grades" EntityType="SchoolEntityContainer.Store.Grades" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Users_Teacher" EntityType="SchoolEntityContainer.Store.Users_Teacher" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Users_Student" EntityType="SchoolEntityContainer.Store.Users_Student" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="SchoolTeacher" Association="SchoolEntityContainer.Store.SchoolTeacher">
+      <End Role="School" EntitySet="Schools" />
+      <End Role="Teacher" EntitySet="Users_Teacher" />
+    </AssociationSet>
+    <AssociationSet Name="SchoolClass" Association="SchoolEntityContainer.Store.SchoolClass">
+      <End Role="School" EntitySet="Schools" />
+      <End Role="Class" EntitySet="Classes" />
+    </AssociationSet>
+    <AssociationSet Name="TeacherGrade" Association="SchoolEntityContainer.Store.TeacherGrade">
+      <End Role="Teacher" EntitySet="Users_Teacher" />
+      <End Role="Grade" EntitySet="Grades" />
+    </AssociationSet>
+    <AssociationSet Name="StudentGrade" Association="SchoolEntityContainer.Store.StudentGrade">
+      <End Role="Student" EntitySet="Users_Student" />
+      <End Role="Grade" EntitySet="Grades" />
+    </AssociationSet>
+    <AssociationSet Name="ClassTeacher" Association="SchoolEntityContainer.Store.ClassTeacher">
+      <End Role="Class" EntitySet="Classes" />
+      <End Role="Teacher" EntitySet="Users_Teacher" />
+    </AssociationSet>
+    <AssociationSet Name="ClassSubject" Association="SchoolEntityContainer.Store.ClassSubject">
+      <End Role="Class" EntitySet="Classes" />
+      <End Role="Subject" EntitySet="Subjects" />
+    </AssociationSet>
+    <AssociationSet Name="SubjectGrade" Association="SchoolEntityContainer.Store.SubjectGrade">
+      <End Role="Subject" EntitySet="Subjects" />
+      <End Role="Grade" EntitySet="Grades" />
+    </AssociationSet>
+    <AssociationSet Name="SubjectNotification" Association="SchoolEntityContainer.Store.SubjectNotification">
+      <End Role="Subject" EntitySet="Subjects" />
+      <End Role="Notification" EntitySet="Notifications" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Teacher_inherits_User" Association="SchoolEntityContainer.Store.FK_Teacher_inherits_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Teacher" EntitySet="Users_Teacher" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Student_inherits_User" Association="SchoolEntityContainer.Store.FK_Student_inherits_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Student" EntitySet="Users_Student" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Classes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Number" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Letter" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="SchoolId" Type="int" Nullable="false" />
+    <Property Name="Teacher_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Schools">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Subjects">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ClassId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Notifications">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="SubjectId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Grades">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Mark" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TeacherId" Type="int" Nullable="false" />
+    <Property Name="StudentId" Type="int" Nullable="false" />
+    <Property Name="SubjectId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users_Teacher">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Salt" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="SchoolId" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users_Student">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Egn" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="SchoolTeacher">
+    <End Role="School" Type="SchoolEntityContainer.Store.Schools" Multiplicity="1" />
+    <End Role="Teacher" Type="SchoolEntityContainer.Store.Users_Teacher" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="School">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Teacher">
+        <PropertyRef Name="SchoolId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SchoolClass">
+    <End Role="School" Type="SchoolEntityContainer.Store.Schools" Multiplicity="1" />
+    <End Role="Class" Type="SchoolEntityContainer.Store.Classes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="School">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Class">
+        <PropertyRef Name="SchoolId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TeacherGrade">
+    <End Role="Teacher" Type="SchoolEntityContainer.Store.Users_Teacher" Multiplicity="1" />
+    <End Role="Grade" Type="SchoolEntityContainer.Store.Grades" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Teacher">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Grade">
+        <PropertyRef Name="TeacherId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="StudentGrade">
+    <End Role="Student" Type="SchoolEntityContainer.Store.Users_Student" Multiplicity="1" />
+    <End Role="Grade" Type="SchoolEntityContainer.Store.Grades" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Grade">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ClassTeacher">
+    <End Role="Class" Type="SchoolEntityContainer.Store.Classes" Multiplicity="*" />
+    <End Role="Teacher" Type="SchoolEntityContainer.Store.Users_Teacher" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Teacher">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Class">
+        <PropertyRef Name="Teacher_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ClassSubject">
+    <End Role="Class" Type="SchoolEntityContainer.Store.Classes" Multiplicity="1" />
+    <End Role="Subject" Type="SchoolEntityContainer.Store.Subjects" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Class">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Subject">
+        <PropertyRef Name="ClassId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SubjectGrade">
+    <End Role="Subject" Type="SchoolEntityContainer.Store.Subjects" Multiplicity="1" />
+    <End Role="Grade" Type="SchoolEntityContainer.Store.Grades" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subject">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Grade">
+        <PropertyRef Name="SubjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SubjectNotification">
+    <End Role="Subject" Type="SchoolEntityContainer.Store.Subjects" Multiplicity="1" />
+    <End Role="Notification" Type="SchoolEntityContainer.Store.Notifications" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subject">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Notification">
+        <PropertyRef Name="SubjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Teacher_inherits_User">
+    <End Role="User" Type="SchoolEntityContainer.Store.Users" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Teacher" Type="SchoolEntityContainer.Store.Users_Teacher" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Teacher">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Student_inherits_User">
+    <End Role="User" Type="SchoolEntityContainer.Store.Users" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Student" Type="SchoolEntityContainer.Store.Users_Student" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="SchoolEntityContainer" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
         <EntityContainer Name="SchoolEntityContainerContainer" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Users" EntityType="SchoolEntityContainer.User" />
+          <EntitySet Name="Classes" EntityType="SchoolEntityContainer.Class" />
+          <EntitySet Name="Schools" EntityType="SchoolEntityContainer.School" />
+          <EntitySet Name="Subjects" EntityType="SchoolEntityContainer.Subject" />
+          <EntitySet Name="Notifications" EntityType="SchoolEntityContainer.Notification" />
+          <EntitySet Name="Grades" EntityType="SchoolEntityContainer.Grade" />
+          <AssociationSet Name="SchoolTeacher" Association="SchoolEntityContainer.SchoolTeacher">
+            <End Role="School" EntitySet="Schools" />
+            <End Role="Teacher" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="SchoolClass" Association="SchoolEntityContainer.SchoolClass">
+            <End Role="School" EntitySet="Schools" />
+            <End Role="Class" EntitySet="Classes" />
+          </AssociationSet>
+          <AssociationSet Name="TeacherGrade" Association="SchoolEntityContainer.TeacherGrade">
+            <End Role="Teacher" EntitySet="Users" />
+            <End Role="Grade" EntitySet="Grades" />
+          </AssociationSet>
+          <AssociationSet Name="StudentGrade" Association="SchoolEntityContainer.StudentGrade">
+            <End Role="Student" EntitySet="Users" />
+            <End Role="Grade" EntitySet="Grades" />
+          </AssociationSet>
+          <AssociationSet Name="ClassTeacher" Association="SchoolEntityContainer.ClassTeacher">
+            <End Role="Class" EntitySet="Classes" />
+            <End Role="Teacher" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="ClassSubject" Association="SchoolEntityContainer.ClassSubject">
+            <End Role="Class" EntitySet="Classes" />
+            <End Role="Subject" EntitySet="Subjects" />
+          </AssociationSet>
+          <AssociationSet Name="SubjectGrade" Association="SchoolEntityContainer.SubjectGrade">
+            <End Role="Subject" EntitySet="Subjects" />
+            <End Role="Grade" EntitySet="Grades" />
+          </AssociationSet>
+          <AssociationSet Name="SubjectNotification" Association="SchoolEntityContainer.SubjectNotification">
+            <End Role="Subject" EntitySet="Subjects" />
+            <End Role="Notification" EntitySet="Notifications" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="User">
           <Key>
@@ -28,22 +307,249 @@
         </EntityType>
         <EntityType Name="Student" BaseType="SchoolEntityContainer.User" >
           <Property Name="Egn" Type="String" Nullable="false" />
+          <NavigationProperty Name="Grades" Relationship="SchoolEntityContainer.StudentGrade" FromRole="Student" ToRole="Grade" />
         </EntityType>
         <EntityType Name="Teacher" BaseType="SchoolEntityContainer.User" >
           <Property Name="Password" Type="String" Nullable="false" />
           <Property Name="Salt" Type="String" Nullable="false" />
+          <NavigationProperty Name="School" Relationship="SchoolEntityContainer.SchoolTeacher" FromRole="Teacher" ToRole="School" />
+          <Property Name="SchoolId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Grades" Relationship="SchoolEntityContainer.TeacherGrade" FromRole="Teacher" ToRole="Grade" />
+          <NavigationProperty Name="Class" Relationship="SchoolEntityContainer.ClassTeacher" FromRole="Teacher" ToRole="Class" />
         </EntityType>
+        <EntityType Name="Class">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Number" Type="String" Nullable="false" />
+          <Property Name="Letter" Type="String" Nullable="false" />
+          <NavigationProperty Name="School" Relationship="SchoolEntityContainer.SchoolClass" FromRole="Class" ToRole="School" />
+          <Property Name="SchoolId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Teacher" Relationship="SchoolEntityContainer.ClassTeacher" FromRole="Class" ToRole="Teacher" />
+          <NavigationProperty Name="Subjects" Relationship="SchoolEntityContainer.ClassSubject" FromRole="Class" ToRole="Subject" />
+        </EntityType>
+        <EntityType Name="School">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Address" Type="String" Nullable="false" />
+          <NavigationProperty Name="Teachers" Relationship="SchoolEntityContainer.SchoolTeacher" FromRole="School" ToRole="Teacher" />
+          <NavigationProperty Name="Classes" Relationship="SchoolEntityContainer.SchoolClass" FromRole="School" ToRole="Class" />
+        </EntityType>
+        <EntityType Name="Subject">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" />
+          <NavigationProperty Name="Class" Relationship="SchoolEntityContainer.ClassSubject" FromRole="Subject" ToRole="Class" />
+          <Property Name="ClassId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Grades" Relationship="SchoolEntityContainer.SubjectGrade" FromRole="Subject" ToRole="Grade" />
+          <NavigationProperty Name="Notifications" Relationship="SchoolEntityContainer.SubjectNotification" FromRole="Subject" ToRole="Notification" />
+        </EntityType>
+        <EntityType Name="Notification">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Content" Type="String" Nullable="false" />
+          <NavigationProperty Name="Subject" Relationship="SchoolEntityContainer.SubjectNotification" FromRole="Notification" ToRole="Subject" />
+          <Property Name="SubjectId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Grade">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Mark" Type="String" Nullable="false" />
+          <NavigationProperty Name="Teacher" Relationship="SchoolEntityContainer.TeacherGrade" FromRole="Grade" ToRole="Teacher" />
+          <Property Name="TeacherId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Student" Relationship="SchoolEntityContainer.StudentGrade" FromRole="Grade" ToRole="Student" />
+          <Property Name="StudentId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Subject" Relationship="SchoolEntityContainer.SubjectGrade" FromRole="Grade" ToRole="Subject" />
+          <Property Name="SubjectId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="SchoolTeacher">
+          <End Type="SchoolEntityContainer.School" Role="School" Multiplicity="1" />
+          <End Type="SchoolEntityContainer.Teacher" Role="Teacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="School">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Teacher">
+              <PropertyRef Name="SchoolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SchoolClass">
+          <End Type="SchoolEntityContainer.School" Role="School" Multiplicity="1" />
+          <End Type="SchoolEntityContainer.Class" Role="Class" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="School">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Class">
+              <PropertyRef Name="SchoolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TeacherGrade">
+          <End Type="SchoolEntityContainer.Teacher" Role="Teacher" Multiplicity="1" />
+          <End Type="SchoolEntityContainer.Grade" Role="Grade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Grade">
+              <PropertyRef Name="TeacherId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="StudentGrade">
+          <End Type="SchoolEntityContainer.Student" Role="Student" Multiplicity="1" />
+          <End Type="SchoolEntityContainer.Grade" Role="Grade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Grade">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ClassTeacher">
+          <End Type="SchoolEntityContainer.Class" Role="Class" Multiplicity="0..1" />
+          <End Type="SchoolEntityContainer.Teacher" Role="Teacher" Multiplicity="1" />
+        </Association>
+        <Association Name="ClassSubject">
+          <End Type="SchoolEntityContainer.Class" Role="Class" Multiplicity="1" />
+          <End Type="SchoolEntityContainer.Subject" Role="Subject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Subject">
+              <PropertyRef Name="ClassId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SubjectGrade">
+          <End Type="SchoolEntityContainer.Subject" Role="Subject" Multiplicity="1" />
+          <End Type="SchoolEntityContainer.Grade" Role="Grade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Grade">
+              <PropertyRef Name="SubjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SubjectNotification">
+          <End Type="SchoolEntityContainer.Subject" Role="Subject" Multiplicity="1" />
+          <End Type="SchoolEntityContainer.Notification" Role="Notification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Notification">
+              <PropertyRef Name="SubjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs" Space="C-S">
-        <Alias Key="Model" Value="SchoolEntityContainer" />
-        <Alias Key="Target" Value="SchoolEntityContainer.Store" />
-        <EntityContainerMapping CdmEntityContainer="SchoolEntityContainerContainer" StorageEntityContainer="SchoolEntityContainerTargetContainer">
-        </EntityContainerMapping>
-      </Mapping>
-    </edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SchoolEntityContainerStoreContainer" CdmEntityContainer="SchoolEntityContainerContainer">
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="IsTypeOf(SchoolEntityContainer.User)">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(SchoolEntityContainer.Teacher)">
+        <MappingFragment StoreEntitySet="Users_Teacher">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Salt" ColumnName="Salt" />
+          <ScalarProperty Name="SchoolId" ColumnName="SchoolId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(SchoolEntityContainer.Student)">
+        <MappingFragment StoreEntitySet="Users_Student">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Egn" ColumnName="Egn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Classes">
+      <EntityTypeMapping TypeName="IsTypeOf(SchoolEntityContainer.Class)">
+        <MappingFragment StoreEntitySet="Classes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="Letter" ColumnName="Letter" />
+          <ScalarProperty Name="SchoolId" ColumnName="SchoolId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Schools">
+      <EntityTypeMapping TypeName="IsTypeOf(SchoolEntityContainer.School)">
+        <MappingFragment StoreEntitySet="Schools">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Subjects">
+      <EntityTypeMapping TypeName="IsTypeOf(SchoolEntityContainer.Subject)">
+        <MappingFragment StoreEntitySet="Subjects">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ClassId" ColumnName="ClassId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Notifications">
+      <EntityTypeMapping TypeName="IsTypeOf(SchoolEntityContainer.Notification)">
+        <MappingFragment StoreEntitySet="Notifications">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Grades">
+      <EntityTypeMapping TypeName="IsTypeOf(SchoolEntityContainer.Grade)">
+        <MappingFragment StoreEntitySet="Grades">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Mark" ColumnName="Mark" />
+          <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="ClassTeacher" TypeName="SchoolEntityContainer.ClassTeacher" StoreEntitySet="Classes">
+      <EndProperty Name="Teacher">
+        <ScalarProperty Name="Id" ColumnName="Teacher_Id" />
+      </EndProperty>
+      <EndProperty Name="Class">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
@@ -57,6 +563,7 @@
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="True" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
       </DesignerInfoPropertySet>
     </edmx:Options>
     <!-- Diagram content (shape and connector positions) -->

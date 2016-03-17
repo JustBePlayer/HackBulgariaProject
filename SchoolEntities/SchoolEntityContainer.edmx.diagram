@@ -4,12 +4,25 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="eec176fee2234cd095528f7e694d9ef9" Name="Diagram1" >
+      <Diagram DiagramId="eec176fee2234cd095528f7e694d9ef9" Name="Diagram1" ZoomLevel="55" >
         <EntityTypeShape EntityType="SchoolEntityContainer.User" Width="1.5" PointX="8.625" PointY="1.625" />
         <EntityTypeShape EntityType="SchoolEntityContainer.Student" Width="1.5" PointX="10.875" PointY="1.25" />
         <InheritanceConnector EntityType="SchoolEntityContainer.Student" />
-        <EntityTypeShape EntityType="SchoolEntityContainer.Teacher" Width="1.5" PointX="10" PointY="4.5" />
+        <EntityTypeShape EntityType="SchoolEntityContainer.Teacher" Width="1.5" PointX="10" PointY="4.875" />
         <InheritanceConnector EntityType="SchoolEntityContainer.Teacher" />
+        <EntityTypeShape EntityType="SchoolEntityContainer.Class" Width="1.5" PointX="13" PointY="2.125" />
+        <EntityTypeShape EntityType="SchoolEntityContainer.School" Width="1.5" PointX="6.375" PointY="2.75" />
+        <EntityTypeShape EntityType="SchoolEntityContainer.Subject" Width="1.5" PointX="12.5" PointY="4.875" />
+        <EntityTypeShape EntityType="SchoolEntityContainer.Notification" Width="1.5" PointX="16.75" PointY="3.5" />
+        <EntityTypeShape EntityType="SchoolEntityContainer.Grade" Width="1.5" PointX="15" PointY="5.25" />
+        <AssociationConnector Association="SchoolEntityContainer.SchoolTeacher" />
+        <AssociationConnector Association="SchoolEntityContainer.SchoolClass" />
+        <AssociationConnector Association="SchoolEntityContainer.TeacherGrade" />
+        <AssociationConnector Association="SchoolEntityContainer.StudentGrade" />
+        <AssociationConnector Association="SchoolEntityContainer.ClassTeacher" />
+        <AssociationConnector Association="SchoolEntityContainer.ClassSubject" />
+        <AssociationConnector Association="SchoolEntityContainer.SubjectGrade" />
+        <AssociationConnector Association="SchoolEntityContainer.SubjectNotification" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
