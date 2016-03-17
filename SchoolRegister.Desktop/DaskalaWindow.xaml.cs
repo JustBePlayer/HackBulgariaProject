@@ -23,5 +23,11 @@ namespace SchoolRegister.Desktop
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            StudentWindow studWin = new StudentWindow();
+            studWin.Show();
+        }
     }
 }

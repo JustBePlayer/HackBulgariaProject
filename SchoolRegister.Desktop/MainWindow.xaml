@@ -10,7 +10,7 @@
         <Label Height="24" Width="70" Content="Password:" HorizontalAlignment="Center" Margin="36,88,286,57"/>
         <TextBox x:Name="usernameBox" HorizontalAlignment="Center" Height="24" TextWrapping="Wrap" VerticalAlignment="Center" Width="225" Margin="110,60,65,87"/>
         <PasswordBox x:Name="passwordBox" HorizontalAlignment="Center" Height="24" VerticalAlignment="Center" Width="225" Margin="110,89,65,58"/>
-        <Button Name="Enter" Content="Sign in"  Height="20" Width="80" Margin="255,118,65,33" Click="SignInClick" BorderBrush="#FF686868" Foreground="Black" Background="#FFBBBBBB"  />
+        <Button Name="Enter" Content="Sign in"  Height="20" Width="80" Margin="255,118,65,33" BorderBrush="#FF686868" Foreground="Black" Background="#FFBBBBBB" Click="SignInClick"  />
         <Label x:Name="forgottenPasswordLabel" Content="Forgotten password" HorizontalAlignment="Left" Margin="110,113,0,0" VerticalAlignment="Top" Foreground="Blue"/>
     </Grid>
 </Window>

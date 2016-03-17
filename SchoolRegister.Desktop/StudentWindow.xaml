@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SchoolRegister.Desktop"
         mc:Ignorable="d"
-        Title="StudentWindow" Height="350" Width="500">
-    <Grid>
+        ResizeMode="NoResize"
+        Title="StudentWindow" Height="371.429" Width="638.571">
+    <Grid Margin="0,0,2,9">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
@@ -16,7 +17,7 @@
         <Label Grid.Column="0" Content="Students" Height="40" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" VerticalAlignment="Top"/>
 
         <Label Grid.Column="1" Content="Grades" Height="40" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" VerticalAlignment="Top"/>
-        <Button x:Name="AddGrade" Content="Add Grade" Grid.Column="1" Height="35" VerticalAlignment="Bottom" Margin="5,0,133,5" />
-        
+        <Button x:Name="AddGrade" Content="Add Grade" Grid.Column="1" Height="40" VerticalAlignment="Bottom" Margin="0,0,110,0" />
+        <Button x:Name="SaveChanges" Content="Save Changes" Grid.Column="1" Height="40" VerticalAlignment="Bottom" Margin="118,0,0,0" RenderTransformOrigin="0.205,0.368"/>
     </Grid>
 </Window>
