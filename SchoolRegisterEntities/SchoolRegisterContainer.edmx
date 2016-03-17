@@ -1,20 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
   <!-- EF Runtime content -->
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="SchoolRegisterContainer.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="SchoolRegisterContainer.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
   <EntityContainer Name="SchoolRegisterContainerStoreContainer">
-    <EntitySet Name="User" EntityType="SchoolRegisterContainer.Store.User" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="School" EntityType="SchoolRegisterContainer.Store.School" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Class" EntityType="SchoolRegisterContainer.Store.Class" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Subject" EntityType="SchoolRegisterContainer.Store.Subject" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Grades" EntityType="SchoolRegisterContainer.Store.Grades" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Notification" EntityType="SchoolRegisterContainer.Store.Notification" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="User_Teacher" EntityType="SchoolRegisterContainer.Store.User_Teacher" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="User_Student" EntityType="SchoolRegisterContainer.Store.User_Student" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="ClassSubject" EntityType="SchoolRegisterContainer.Store.ClassSubject" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="User" EntityType="SchoolRegisterContainer.Store.User" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="School" EntityType="SchoolRegisterContainer.Store.School" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="Class" EntityType="SchoolRegisterContainer.Store.Class" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="Subject" EntityType="SchoolRegisterContainer.Store.Subject" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="Grades" EntityType="SchoolRegisterContainer.Store.Grades" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="Notification" EntityType="SchoolRegisterContainer.Store.Notification" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="User_Teacher" EntityType="SchoolRegisterContainer.Store.User_Teacher" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="User_Student" EntityType="SchoolRegisterContainer.Store.User_Student" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="ClassSubject" EntityType="SchoolRegisterContainer.Store.ClassSubject" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
     <AssociationSet Name="TeacherSchool" Association="SchoolRegisterContainer.Store.TeacherSchool">
       <End Role="Teacher" EntitySet="User_Teacher" />
       <End Role="School" EntitySet="School" />
@@ -264,7 +264,7 @@
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="SchoolRegisterContainer" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+      <Schema Namespace="SchoolRegisterContainer" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2006/04/edm" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
         <EntityContainer Name="SchoolRegisterContainerContainer" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="User" EntityType="SchoolRegisterContainer.User" />
           <EntitySet Name="School" EntityType="SchoolRegisterContainer.School" />
@@ -322,7 +322,7 @@
           <NavigationProperty Name="Teacher" Relationship="SchoolRegisterContainer.TeacherSchool" FromRole="School" ToRole="Teacher" />
           <NavigationProperty Name="Class" Relationship="SchoolRegisterContainer.SchoolClass" FromRole="School" ToRole="Class" />
         </EntityType>
-        <EntityType Name="Student" BaseType="SchoolRegisterContainer.User" >
+        <EntityType Name="Student" BaseType="SchoolRegisterContainer.User">
           <Property Name="Egn" Type="String" Nullable="false" />
           <Property Name="Class" Type="String" Nullable="false" />
           <NavigationProperty Name="Grades" Relationship="SchoolRegisterContainer.StudentGrades" FromRole="Student" ToRole="Grades" />
@@ -442,7 +442,7 @@
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+    <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
   <EntityContainerMapping StorageEntityContainer="SchoolRegisterContainerStoreContainer" CdmEntityContainer="SchoolRegisterContainerContainer">
     <EntitySetMapping Name="User">
       <EntityTypeMapping TypeName="IsTypeOf(SchoolRegisterContainer.User)">
@@ -547,19 +547,19 @@
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
-  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <edmx:Designer>
     <edmx:Connection>
-      <DesignerInfoPropertySet>
-        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
-      </DesignerInfoPropertySet>
+      <edmx:DesignerInfoPropertySet>
+        <edmx:DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </edmx:DesignerInfoPropertySet>
     </edmx:Connection>
     <edmx:Options>
-      <DesignerInfoPropertySet>
-        <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="False" />
-        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
-        <DesignerProperty Name="UseLegacyProvider" Value="False" />
-      </DesignerInfoPropertySet>
+      <edmx:DesignerInfoPropertySet>
+        <edmx:DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <edmx:DesignerProperty Name="EnablePluralization" Value="False" />
+        <edmx:DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <edmx:DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </edmx:DesignerInfoPropertySet>
     </edmx:Options>
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
