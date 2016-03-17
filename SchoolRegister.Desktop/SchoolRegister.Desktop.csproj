@@ -64,19 +64,12 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AccessData.cs" />
-    <Compile Include="Daskala.xaml.cs">
-      <DependentUpon>Daskala.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ForgottenPasswordForm.xaml.cs">
       <DependentUpon>ForgottenPasswordForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="StudentWindow.xaml.cs">
       <DependentUpon>StudentWindow.xaml</DependentUpon>
     </Compile>
-    <Page Include="Daskala.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="ForgottenPasswordForm.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
