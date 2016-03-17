@@ -25,16 +25,6 @@ namespace SchoolRegister.Desktop
             InitializeComponent();
         }
 
-        private void forgottenPasswordButtonClick(object sender, MouseButtonEventArgs e)
-        {
-            ForgottenPasswordForm form = new ForgottenPasswordForm();
-            form.ShowDialog();
-        }
-
-        private void SignInClick(object sender, RoutedEventArgs e)
-        {
-            Daskala dask = new Daskala();
-            dask.ShowDialog();
-        }
+        
     }
 }
