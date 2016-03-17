@@ -9,5 +9,5 @@
         <PasswordBox x:Name="passwordBox" HorizontalAlignment="Center" Height="24" VerticalAlignment="Center" Width="225" Margin="110,89,65,58"/>
         <Button Name="Enter" Content="Sign in"  Height="20" Width="80" Margin="255,118,65,33" Click="SignInClick"  />
         <Label x:Name="forgottenPasswordLabel" Content="Forgotten password" HorizontalAlignment="Left" Margin="109,112,0,0" VerticalAlignment="Top" MouseUp="forgottenPasswordLabel_MouseUp"/>
-   </Grid>
+    </Grid>
 </Window>

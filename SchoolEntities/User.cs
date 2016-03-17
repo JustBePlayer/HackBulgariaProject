@@ -7,21 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SchoolRegisterEntities
+namespace SchoolEntities
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Student : User
+    public partial class User
     {
-        public Student()
-        {
-            this.Grades = new HashSet<Grades>();
-        }
-    
-        public string Egn { get; set; }
-        public string Class { get; set; }
-    
-        public virtual ICollection<Grades> Grades { get; set; }
+        public int Id { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Address { get; set; }
+        public string Email { get; set; }
+        public string Username { get; set; }
     }
 }

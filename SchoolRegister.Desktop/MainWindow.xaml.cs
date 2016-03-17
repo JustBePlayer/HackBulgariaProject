@@ -24,18 +24,5 @@ namespace SchoolRegister.Desktop
         {
             InitializeComponent();
         }
-
-        private void forgottenPasswordLabel_MouseUp(object sender, MouseButtonEventArgs e)
-        {
-            Window test = new Window();
-            test.ShowDialog();
-          
-        }
-
-        private void SignInClick(object sender, RoutedEventArgs e)
-        {
-           
-            
-        }
     }
 }

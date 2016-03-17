@@ -7,25 +7,26 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SchoolRegisterEntities
+namespace SchoolEntities
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Class
+    public partial class Teacher : User
     {
-        public Class()
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Teacher()
         {
-            this.Subject = new HashSet<Subject>();
+            this.Grades = new HashSet<Grade>();
         }
     
-        public int Id { get; set; }
-        public string Number { get; set; }
-        public string Letter { get; set; }
-        public string Teacher { get; set; }
+        public string Password { get; set; }
+        public string Salt { get; set; }
         public int SchoolId { get; set; }
     
         public virtual School School { get; set; }
-        public virtual ICollection<Subject> Subject { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Grade> Grades { get; set; }
+        public virtual Class Class { get; set; }
     }
 }
