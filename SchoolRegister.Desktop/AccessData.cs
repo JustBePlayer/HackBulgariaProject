@@ -18,7 +18,7 @@ namespace SchoolRegister.Desktop
         {
             context.SaveChanges();
         }
-
+        
         public static void AddGrade()
         {
             context.Grades.Create();
