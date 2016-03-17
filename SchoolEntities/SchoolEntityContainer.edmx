@@ -105,7 +105,7 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Mark" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Mark" Type="int" Nullable="false" />
     <Property Name="TeacherId" Type="int" Nullable="false" />
     <Property Name="StudentId" Type="int" Nullable="false" />
     <Property Name="SubjectId" Type="int" Nullable="false" />
@@ -364,7 +364,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Mark" Type="String" Nullable="false" />
+          <Property Name="Mark" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Teacher" Relationship="SchoolEntityContainer.TeacherGrade" FromRole="Grade" ToRole="Teacher" />
           <Property Name="TeacherId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Student" Relationship="SchoolEntityContainer.StudentGrade" FromRole="Grade" ToRole="Student" />
@@ -413,10 +413,8 @@
           <End Type="SchoolEntityContainer.Grade" Role="Grade" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Student">
-              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Grade">
-              <PropertyRef Name="StudentId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -485,12 +483,11 @@
           <ScalarProperty Name="SchoolId" ColumnName="SchoolId" />
         </MappingFragment>
       </EntityTypeMapping>
-      <EntityTypeMapping TypeName="IsTypeOf(SchoolEntityContainer.Student)">
-        <MappingFragment StoreEntitySet="Users_Student">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Egn" ColumnName="Egn" />
-        </MappingFragment>
-      </EntityTypeMapping>
+            <EntityTypeMapping TypeName="IsTypeOf(SchoolEntityContainer.Student)" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+              <MappingFragment StoreEntitySet="Users_Student">
+                <ScalarProperty Name="Egn" ColumnName="Egn" />
+              </MappingFragment>
+            </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Classes">
       <EntityTypeMapping TypeName="IsTypeOf(SchoolEntityContainer.Class)">

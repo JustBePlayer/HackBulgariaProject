@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 03/17/2016 13:37:55
--- Generated from EDMX file: C:\Users\Nicky\Documents\GitHub\HackBulgariaProject\SchoolEntities\SchoolEntityContainer.edmx
+-- Date Created: 03/17/2016 18:29:33
+-- Generated from EDMX file: C:\Users\Aleydin\Documents\GitHub\HackBulgariaProject\SchoolEntities\SchoolEntityContainer.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -17,11 +17,65 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[FK_SchoolTeacher]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Users_Teacher] DROP CONSTRAINT [FK_SchoolTeacher];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SchoolClass]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Classes] DROP CONSTRAINT [FK_SchoolClass];
+GO
+IF OBJECT_ID(N'[dbo].[FK_TeacherGrade]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Grades] DROP CONSTRAINT [FK_TeacherGrade];
+GO
+IF OBJECT_ID(N'[dbo].[FK_StudentGrade]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Grades] DROP CONSTRAINT [FK_StudentGrade];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ClassTeacher]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Classes] DROP CONSTRAINT [FK_ClassTeacher];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ClassSubject]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Subjects] DROP CONSTRAINT [FK_ClassSubject];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SubjectGrade]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Grades] DROP CONSTRAINT [FK_SubjectGrade];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SubjectNotification]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Notifications] DROP CONSTRAINT [FK_SubjectNotification];
+GO
+IF OBJECT_ID(N'[dbo].[FK_Teacher_inherits_User]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Users_Teacher] DROP CONSTRAINT [FK_Teacher_inherits_User];
+GO
+IF OBJECT_ID(N'[dbo].[FK_Student_inherits_User]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Users_Student] DROP CONSTRAINT [FK_Student_inherits_User];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[Users]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Users];
+GO
+IF OBJECT_ID(N'[dbo].[Classes]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Classes];
+GO
+IF OBJECT_ID(N'[dbo].[Schools]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Schools];
+GO
+IF OBJECT_ID(N'[dbo].[Subjects]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Subjects];
+GO
+IF OBJECT_ID(N'[dbo].[Notifications]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Notifications];
+GO
+IF OBJECT_ID(N'[dbo].[Grades]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Grades];
+GO
+IF OBJECT_ID(N'[dbo].[Users_Teacher]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Users_Teacher];
+GO
+IF OBJECT_ID(N'[dbo].[Users_Student]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Users_Student];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
@@ -75,7 +129,7 @@ GO
 -- Creating table 'Grades'
 CREATE TABLE [dbo].[Grades] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [Mark] nvarchar(max)  NOT NULL,
+    [Mark] int  NOT NULL,
     [TeacherId] int  NOT NULL,
     [StudentId] int  NOT NULL,
     [SubjectId] int  NOT NULL

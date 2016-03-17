@@ -52,19 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class.cs">
-      <DependentUpon>SchoolEntityContainer.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Grade.cs">
-      <DependentUpon>SchoolEntityContainer.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Notification.cs">
-      <DependentUpon>SchoolEntityContainer.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="School.cs">
-      <DependentUpon>SchoolEntityContainer.tt</DependentUpon>
-    </Compile>
     <Compile Include="SchoolEntityContainer.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -79,18 +67,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SchoolEntityContainer.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Student.cs">
-      <DependentUpon>SchoolEntityContainer.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Subject.cs">
-      <DependentUpon>SchoolEntityContainer.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Teacher.cs">
-      <DependentUpon>SchoolEntityContainer.tt</DependentUpon>
-    </Compile>
-    <Compile Include="User.cs">
-      <DependentUpon>SchoolEntityContainer.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
