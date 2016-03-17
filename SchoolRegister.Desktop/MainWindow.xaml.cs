@@ -25,6 +25,10 @@ namespace SchoolRegister.Desktop
             InitializeComponent();
         }
 
-        
+        private void forgottenPasswordClick(object sender, MouseButtonEventArgs e)
+        {
+            var forgottenPass = new ForgottenPasswordForm();
+            forgottenPass.ShowDialog();
+        }
     }
 }
