@@ -10,25 +10,23 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace SchoolRegister.Desktop
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for ForgottenPasswordForm.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ForgottenPasswordForm : Window
     {
-        public MainWindow()
+        public ForgottenPasswordForm()
         {
             InitializeComponent();
         }
 
-        private void forgottenPasswordButtonClick(object sender, MouseButtonEventArgs e)
+        private void backButtonClick(object sender, RoutedEventArgs e)
         {
-            ForgottenPasswordForm form = new ForgottenPasswordForm();
-            form.ShowDialog();
+            this.Close();
         }
     }
 }
