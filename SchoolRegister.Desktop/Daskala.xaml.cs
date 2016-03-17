@@ -10,32 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace SchoolRegister.Desktop
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for Daskala.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Daskala : Window
     {
-        public MainWindow()
+        public Daskala()
         {
             InitializeComponent();
-        }
-
-        private void forgottenPasswordLabel_MouseUp(object sender, MouseButtonEventArgs e)
-        {
-            Window test = new Window();
-            test.ShowDialog();
-          
-        }
-
-        private void SignInClick(object sender, RoutedEventArgs e)
-        {
-           
-            
         }
     }
 }
