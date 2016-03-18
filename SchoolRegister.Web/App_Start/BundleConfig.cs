@@ -1,5 +1,4 @@
 ﻿using System.Web;
-//using Mic;
 using System.Web.Optimization;
 
 namespace SchoolRegister.Web
