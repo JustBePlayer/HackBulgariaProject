@@ -100,12 +100,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SchoolRegister.Server\SchoolRegister.Server.csproj">
-      <Project>{32024b5d-c453-4e54-a357-0d807ee0dc9a}</Project>
-      <Name>SchoolRegister.Server</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

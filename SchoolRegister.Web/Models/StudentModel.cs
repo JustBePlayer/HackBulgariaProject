@@ -12,6 +12,7 @@ namespace SchoolRegister.Web.Models
         public string LastName { get; set; }
         public string Email { get; set; }
         public string Address { get; set; }
+        public string Egn { get; set; }
 
         public SchoolModel School { get; set; }
         //public IEnumerable<GradeModel> Grades { get; set; }
