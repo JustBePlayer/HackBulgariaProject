@@ -9,7 +9,7 @@
         <EntityTypeShape EntityType="SchoolEntityContainer.Student" Width="1.5" PointX="10.875" PointY="1.25" />
         <EntityTypeShape EntityType="SchoolEntityContainer.Teacher" Width="1.5" PointX="9.625" PointY="4.75" />
         <InheritanceConnector EntityType="SchoolEntityContainer.Teacher" />
-        <EntityTypeShape EntityType="SchoolEntityContainer.Class" Width="1.5" PointX="13" PointY="2.125" />
+        <EntityTypeShape EntityType="SchoolEntityContainer.Class" Width="1.5" PointX="13.25" PointY="2.125" />
         <EntityTypeShape EntityType="SchoolEntityContainer.School" Width="1.5" PointX="5.125" PointY="2.5" />
         <EntityTypeShape EntityType="SchoolEntityContainer.Subject" Width="1.5" PointX="12.75" PointY="5.75" />
         <EntityTypeShape EntityType="SchoolEntityContainer.Notification" Width="1.5" PointX="16.75" PointY="3.5" />

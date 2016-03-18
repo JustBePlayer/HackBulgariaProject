@@ -24,5 +24,13 @@ namespace SchoolRegister.Desktop
         {
             InitializeComponent();
         }
+
+
+
+        private void SignInClick(object sender, RoutedEventArgs e)
+        {
+           
+        }
+        
     }
 }
