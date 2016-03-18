@@ -22,6 +22,24 @@ namespace SchoolRegister.Desktop
         public SelectionWindow()
         {
             InitializeComponent();
+            //this.listBox.ItemsSource
+            
+        }
+
+        private void exitbuttonClick(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Are you sure?", "Exit", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                var mainWindow = new MainWindow();
+                mainWindow.Show();
+                this.Close();
+            }
+        }
+
+        private void gradesButtonClick(object sender, RoutedEventArgs e)
+        {
+            var grades = new StudentWindow();
+            grades.Show();
         }
     }
 }
