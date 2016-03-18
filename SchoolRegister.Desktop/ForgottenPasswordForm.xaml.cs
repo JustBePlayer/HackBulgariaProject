@@ -24,8 +24,16 @@ namespace SchoolRegister.Desktop
             InitializeComponent();
         }
 
+        private void mouseDownWindow(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+                this.DragMove();
+        }
+
         private void backButtonClick(object sender, RoutedEventArgs e)
         {
+            var mainWindow = new MainWindow();
+            mainWindow.Show();
             this.Close();
         }
     }

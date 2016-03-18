@@ -25,17 +25,32 @@ namespace SchoolRegister.Desktop
             InitializeComponent();
         }
 
-        
-
-        private void SignInClick(object sender, RoutedEventArgs e)
+        private void signInButtonClick(object sender, RoutedEventArgs e)
         {
-            Daskala dask = new Daskala();
-            dask.Show();
+            var selectionWindow = new SelectionWindow();
+            selectionWindow.Show();
             this.Close();
+        }
+
+        private void exitButtonClick(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void mouseDownWindow(object sender, MouseButtonEventArgs e)
+        {
+            if (forgottenPasswordLabel.IsMouseOver)
+                forgottenPasswordClick(sender, e);
+
+            if (e.LeftButton == MouseButtonState.Pressed)
+                this.DragMove();
+        }
+
         private void forgottenPasswordClick(object sender, MouseButtonEventArgs e)
         {
             var forgottenPass = new ForgottenPasswordForm();
-            forgottenPass.ShowDialog();
+            forgottenPass.Show();
+            this.Close();
         }
     }
 }

@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:SchoolRegister.Desktop"
         mc:Ignorable="d"
         ResizeMode="NoResize"
-        Title="StudentWindow" Height="371.429" Width="638.571">
+        Title="StudentWindow" Height="371.429" Width="638.571"
+        WindowStartupLocation="CenterScreen">
     <Grid Margin="0,0,2,9">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
