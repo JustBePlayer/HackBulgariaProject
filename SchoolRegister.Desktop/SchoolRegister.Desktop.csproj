@@ -63,15 +63,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AccessData.cs" />
     <Compile Include="ForgottenPasswordForm.xaml.cs">
       <DependentUpon>ForgottenPasswordForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SelectionWindow.xaml.cs">
+      <DependentUpon>SelectionWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="StudentWindow.xaml.cs">
       <DependentUpon>StudentWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="ForgottenPasswordForm.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -88,6 +91,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="SelectionWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StudentWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -118,14 +129,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SchoolEntities\SchoolEntities.csproj">
-      <Project>{84c8d8ac-40b6-4776-a2b7-9159c3d83079}</Project>
-      <Name>SchoolEntities</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SchoolRegister.Server\SchoolRegister.Server.csproj">
-      <Project>{32024b5d-c453-4e54-a357-0d807ee0dc9a}</Project>
-      <Name>SchoolRegister.Server</Name>
-    </ProjectReference>
+    <Resource Include="DaskalaLogoFINAL.JPG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
