@@ -36,5 +36,10 @@ namespace SchoolRegister.Desktop
             mainWindow.Show();
             this.Close();
         }
+
+        private void resetButtonClick(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Email was sent!");
+        }
     }
 }
