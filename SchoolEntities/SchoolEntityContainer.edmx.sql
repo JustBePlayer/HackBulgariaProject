@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 03/18/2016 02:07:10
+-- Date Created: 03/18/2016 11:25:38
 -- Generated from EDMX file: C:\Users\Aleydin\Documents\GitHub\HackBulgariaProject\SchoolEntities\SchoolEntityContainer.edmx
 -- --------------------------------------------------
 
@@ -41,8 +41,8 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_StudentGrade]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Grades] DROP CONSTRAINT [FK_StudentGrade];
 GO
-IF OBJECT_ID(N'[dbo].[FK_StudentClass]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Users_Student] DROP CONSTRAINT [FK_StudentClass];
+IF OBJECT_ID(N'[dbo].[FK_ClassStudent]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Users_Student] DROP CONSTRAINT [FK_ClassStudent];
 GO
 IF OBJECT_ID(N'[dbo].[FK_Teacher_inherits_User]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Users_Teacher] DROP CONSTRAINT [FK_Teacher_inherits_User];

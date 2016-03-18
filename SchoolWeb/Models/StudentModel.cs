@@ -13,8 +13,11 @@ namespace SchoolWeb.Models
         public string Email { get; set; }
         public string Address { get; set; }
         public string Egn { get; set; }
+        public string SchoolName { get; set; }
 
         public ClassModel Class { get; set; }
+
+        public IEnumerable<StudentDatas> Datas { get; set; }
         //public IEnumerable<GradeModel> Grades { get; set; }
     }
 }
