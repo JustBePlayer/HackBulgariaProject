@@ -1,0 +1,47 @@
+﻿@model SchoolWeb.Models.StudentModel
+
+@{
+    ViewBag.Title = "Subjects";
+}
+
+<h2>Subjects</h2>
+
+<section class="container outer-container">
+    <br><br>
+    <div class="container-fluid well span6 centeredDiv">
+        <div class="row-fluid">
+            <div class="span2">
+                <img src="https://secure.gravatar.com/avatar/de9b11d0f9c0569ba917393ed5e5b3ab?s=140&r=g&d=mm" class="img-circle">
+            </div>
+
+            <div class="span8">
+                <h3>@Html.DisplayFor(m => m.FirstName) @Html.DisplayFor(m => m.LastName)</h3>
+                <h6>Email: @Html.DisplayFor(m => m.Email)</h6>
+                <h6>Address: @Html.DisplayFor(m => m.Address)</h6>
+                <h6>School: @Html.DisplayFor(m => m.Class.School.Name)</h6>
+            </div>
+
+            <div class="span2">
+                <table class="table table-hover">
+                    <thead class="the">
+                        <tr>
+                            <td>Description</td>
+                            <td>Teacher</td>
+                            <td>Marks</td>
+                        </tr>
+                    </thead>
+
+                    @foreach (var subject in Model.Class.Subjects)
+                    {
+                        <tr>
+                            <td>@subject.Description</td>
+                            <td>NA</td>
+                            <td>@subject.GradesToString()</td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+

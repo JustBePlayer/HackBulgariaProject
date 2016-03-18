@@ -1,4 +1,4 @@
-﻿using SchoolRegister.Server;
+﻿//using SchoolRegister.Server;
 using System;
 using System.Collections.Generic;
 using System.Configuration;

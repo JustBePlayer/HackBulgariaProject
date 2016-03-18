@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace SchoolRegister.Desktop
 {
     /// <summary>
-    /// Interaction logic for StudentWindow.xaml
+    /// Interaction logic for Daskala.xaml
     /// </summary>
-    public partial class StudentWindow : Window
+    public partial class Daskala : Window
     {
-        public StudentWindow()
+        public Daskala()
         {
             InitializeComponent();
         }

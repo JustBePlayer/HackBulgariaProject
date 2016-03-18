@@ -31,7 +31,7 @@ namespace SchoolRegister.Desktop
             selectionWindow.Show();
             this.Close();
         }
-
+        
         private void exitButtonClick(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -52,5 +52,6 @@ namespace SchoolRegister.Desktop
             forgottenPass.Show();
             this.Close();
         }
+        
     }
 }

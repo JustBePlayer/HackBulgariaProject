@@ -18,10 +18,11 @@ namespace SchoolEntities
         public Class()
         {
             this.Subjects = new HashSet<Subject>();
+            this.Students = new HashSet<Student>();
         }
     
         public int Id { get; set; }
-        public string Number { get; set; }
+        public int Number { get; set; }
         public string Letter { get; set; }
         public int SchoolId { get; set; }
     
@@ -29,5 +30,7 @@ namespace SchoolEntities
         public virtual Teacher Teacher { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Subject> Subjects { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Student> Students { get; set; }
     }
 }
