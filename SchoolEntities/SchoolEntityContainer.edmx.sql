@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 03/17/2016 18:29:33
+-- Date Created: 03/18/2016 02:07:10
 -- Generated from EDMX file: C:\Users\Aleydin\Documents\GitHub\HackBulgariaProject\SchoolEntities\SchoolEntityContainer.edmx
 -- --------------------------------------------------
 
@@ -17,17 +17,11 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[FK_SchoolTeacher]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Users_Teacher] DROP CONSTRAINT [FK_SchoolTeacher];
-GO
 IF OBJECT_ID(N'[dbo].[FK_SchoolClass]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Classes] DROP CONSTRAINT [FK_SchoolClass];
 GO
 IF OBJECT_ID(N'[dbo].[FK_TeacherGrade]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Grades] DROP CONSTRAINT [FK_TeacherGrade];
-GO
-IF OBJECT_ID(N'[dbo].[FK_StudentGrade]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Grades] DROP CONSTRAINT [FK_StudentGrade];
 GO
 IF OBJECT_ID(N'[dbo].[FK_ClassTeacher]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Classes] DROP CONSTRAINT [FK_ClassTeacher];
@@ -40,6 +34,15 @@ IF OBJECT_ID(N'[dbo].[FK_SubjectGrade]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_SubjectNotification]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Notifications] DROP CONSTRAINT [FK_SubjectNotification];
+GO
+IF OBJECT_ID(N'[dbo].[FK_SchoolTeacher]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Users_Teacher] DROP CONSTRAINT [FK_SchoolTeacher];
+GO
+IF OBJECT_ID(N'[dbo].[FK_StudentGrade]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Grades] DROP CONSTRAINT [FK_StudentGrade];
+GO
+IF OBJECT_ID(N'[dbo].[FK_StudentClass]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Users_Student] DROP CONSTRAINT [FK_StudentClass];
 GO
 IF OBJECT_ID(N'[dbo].[FK_Teacher_inherits_User]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Users_Teacher] DROP CONSTRAINT [FK_Teacher_inherits_User];
@@ -95,7 +98,7 @@ GO
 -- Creating table 'Classes'
 CREATE TABLE [dbo].[Classes] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [Number] nvarchar(max)  NOT NULL,
+    [Number] int  NOT NULL,
     [Letter] nvarchar(max)  NOT NULL,
     [SchoolId] int  NOT NULL,
     [Teacher_Id] int  NOT NULL
@@ -132,7 +135,8 @@ CREATE TABLE [dbo].[Grades] (
     [Mark] int  NOT NULL,
     [TeacherId] int  NOT NULL,
     [StudentId] int  NOT NULL,
-    [SubjectId] int  NOT NULL
+    [SubjectId] int  NOT NULL,
+    [StudentId1] int  NOT NULL
 );
 GO
 
@@ -141,6 +145,7 @@ CREATE TABLE [dbo].[Users_Teacher] (
     [Password] nvarchar(max)  NOT NULL,
     [Salt] nvarchar(max)  NOT NULL,
     [SchoolId] int  NOT NULL,
+    [SchoolId1] int  NOT NULL,
     [Id] int  NOT NULL
 );
 GO
@@ -148,6 +153,7 @@ GO
 -- Creating table 'Users_Student'
 CREATE TABLE [dbo].[Users_Student] (
     [Egn] nvarchar(max)  NOT NULL,
+    [ClassId] int  NOT NULL,
     [Id] int  NOT NULL
 );
 GO
@@ -208,21 +214,6 @@ GO
 -- Creating all FOREIGN KEY constraints
 -- --------------------------------------------------
 
--- Creating foreign key on [SchoolId] in table 'Users_Teacher'
-ALTER TABLE [dbo].[Users_Teacher]
-ADD CONSTRAINT [FK_SchoolTeacher]
-    FOREIGN KEY ([SchoolId])
-    REFERENCES [dbo].[Schools]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_SchoolTeacher'
-CREATE INDEX [IX_FK_SchoolTeacher]
-ON [dbo].[Users_Teacher]
-    ([SchoolId]);
-GO
-
 -- Creating foreign key on [SchoolId] in table 'Classes'
 ALTER TABLE [dbo].[Classes]
 ADD CONSTRAINT [FK_SchoolClass]
@@ -251,21 +242,6 @@ GO
 CREATE INDEX [IX_FK_TeacherGrade]
 ON [dbo].[Grades]
     ([TeacherId]);
-GO
-
--- Creating foreign key on [StudentId] in table 'Grades'
-ALTER TABLE [dbo].[Grades]
-ADD CONSTRAINT [FK_StudentGrade]
-    FOREIGN KEY ([StudentId])
-    REFERENCES [dbo].[Users_Student]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_StudentGrade'
-CREATE INDEX [IX_FK_StudentGrade]
-ON [dbo].[Grades]
-    ([StudentId]);
 GO
 
 -- Creating foreign key on [Teacher_Id] in table 'Classes'
@@ -326,6 +302,51 @@ GO
 CREATE INDEX [IX_FK_SubjectNotification]
 ON [dbo].[Notifications]
     ([SubjectId]);
+GO
+
+-- Creating foreign key on [SchoolId1] in table 'Users_Teacher'
+ALTER TABLE [dbo].[Users_Teacher]
+ADD CONSTRAINT [FK_SchoolTeacher]
+    FOREIGN KEY ([SchoolId1])
+    REFERENCES [dbo].[Schools]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_SchoolTeacher'
+CREATE INDEX [IX_FK_SchoolTeacher]
+ON [dbo].[Users_Teacher]
+    ([SchoolId1]);
+GO
+
+-- Creating foreign key on [StudentId1] in table 'Grades'
+ALTER TABLE [dbo].[Grades]
+ADD CONSTRAINT [FK_StudentGrade]
+    FOREIGN KEY ([StudentId1])
+    REFERENCES [dbo].[Users_Student]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_StudentGrade'
+CREATE INDEX [IX_FK_StudentGrade]
+ON [dbo].[Grades]
+    ([StudentId1]);
+GO
+
+-- Creating foreign key on [ClassId] in table 'Users_Student'
+ALTER TABLE [dbo].[Users_Student]
+ADD CONSTRAINT [FK_ClassStudent]
+    FOREIGN KEY ([ClassId])
+    REFERENCES [dbo].[Classes]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ClassStudent'
+CREATE INDEX [IX_FK_ClassStudent]
+ON [dbo].[Users_Student]
+    ([ClassId]);
 GO
 
 -- Creating foreign key on [Id] in table 'Users_Teacher'
