@@ -23,7 +23,9 @@ namespace SchoolRegister.Desktop
         {
             InitializeComponent();
             //this.listBox.ItemsSource
-            
+            listView.Items.Add("Math");
+            listView.Items.Add("English");
+            listView.Items.Add("P.E.");
         }
 
         private void exitbuttonClick(object sender, RoutedEventArgs e)
@@ -40,6 +42,23 @@ namespace SchoolRegister.Desktop
         {
             var grades = new StudentWindow();
             grades.Show();
+        }
+
+
+
+        private void listView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            listView2.Items.Add("4a");
+            listView2.Items.Add("4b");
+            listView2.Items.Add("4c");
+        }
+
+        private void listView2_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            listView3.Items.Add("Ivaylo Bachvarov");
+            listView3.Items.Add("Radoslav Georgiev");
+            listView3.Items.Add("Antonia Iordanova");
+            listView3.Items.Add("Pavlin Gergov");
         }
     }
 }

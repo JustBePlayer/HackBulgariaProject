@@ -63,6 +63,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="EditGradesWindow.xaml.cs">
+      <DependentUpon>EditGradesWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ForgottenPasswordForm.xaml.cs">
       <DependentUpon>ForgottenPasswordForm.xaml</DependentUpon>
     </Compile>
@@ -75,6 +78,10 @@
     <Compile Include="StudentWindow.xaml.cs">
       <DependentUpon>StudentWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="EditGradesWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ForgottenPasswordForm.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

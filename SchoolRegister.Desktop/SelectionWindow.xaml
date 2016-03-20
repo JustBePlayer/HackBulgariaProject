@@ -33,12 +33,31 @@
             </Border>
 
 
-            <Border Grid.Row="1" Grid.Column="0" BorderThickness="2" BorderBrush="#FF5681FF">
-                <ListBox x:Name="listBox" />
+            <Border Grid.Row="1" Grid.Column="1" BorderThickness="2" BorderBrush="#FF5681FF">
+                <ListView x:Name="listView2" MouseDoubleClick="listView2_MouseDoubleClick" FontSize="26.667" FontFamily="Leelawadee UI">
+                   
+                </ListView>
             </Border>
+           
 
-            <Border Grid.Row="1" Grid.Column="1" BorderThickness="2" BorderBrush="#FF5681FF"/>
-            <Border Grid.Row="1" Grid.Column="2" BorderThickness="2" BorderBrush="#FF5681FF"/>
+            <Border Grid.Row="1" Grid.Column="0" BorderThickness="2" BorderBrush="#FF5681FF">
+                <ListView x:Name="listView" MouseDoubleClick="listView_MouseDoubleClick" FontSize="26.667" FontFamily="Leelawadee UI">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Border>
+            <Border Grid.Row="1" Grid.Column="2" BorderThickness="2" BorderBrush="#FF5681FF">
+                <ListView x:Name="listView3" FontSize="26.667" FontFamily="Leelawadee UI">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Border>
             <Button x:Name="exitButton" Content="Exit" FontFamily="LevenimMT"  HorizontalAlignment="Left" Margin="10,5,0,0" Grid.Row="2" VerticalAlignment="Top" Width="242" Background="White" Height="32" FontSize="25.333" Click="exitbuttonClick"/>
             <Button x:Name="getGradesButton" Content="Grades" Grid.Column="2" HorizontalAlignment="Left" Margin="10,5,0,0" Grid.Row="2" VerticalAlignment="Top" Width="242" Height="32" FontSize="24" FontFamily="Levenim MT" Background="White" Click="gradesButtonClick"/>
 

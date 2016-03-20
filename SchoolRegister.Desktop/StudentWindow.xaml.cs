@@ -22,6 +22,15 @@ namespace SchoolRegister.Desktop
         public StudentWindow()
         {
             InitializeComponent();
+            listView.Items.Add("Ivaylo Bachvarov");
+            listView.Items.Add("Radoslav Georgiev");
+            listView.Items.Add("Antonia Iordanova");
+            listView.Items.Add("Pavlin Gergov");
+
+            listView1.Items.Add("6, 2, 4");
+            listView1.Items.Add("6, 6, 4");
+            listView1.Items.Add("5, 5, 6");
+            listView1.Items.Add("6, 4, 5");
         }
 
         private void backButtonClick(object sender, RoutedEventArgs e)
@@ -33,6 +42,12 @@ namespace SchoolRegister.Desktop
         {
             var sendNotifcation = new SendNotificationWindow();
             sendNotifcation.ShowDialog();
+        }
+        
+        private void addGradebutton(object sender, RoutedEventArgs e)
+        {
+            var addGrade = new EditGradesWindow();
+            addGrade.ShowDialog();
         }
     }
 }
